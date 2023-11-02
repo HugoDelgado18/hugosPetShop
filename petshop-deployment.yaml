@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: petshop.springboot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: petshop.springboot
+  template:
+    metadata:
+      name: petshop-pod
+      labels:
+        name: petshop-pod
+        app: petshop.springboot
+    spec:
+      containers:
+        - name: petshop
+          image: hugodelgado1/petshop:latest # replace this with your image name
+          ports:
+            - containerPort: 8080 # this is the port that your application listens to
